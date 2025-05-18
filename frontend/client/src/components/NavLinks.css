@@ -1,15 +1,119 @@
-.header__bottom__menus ul {
+.header__bottom__menus {
+  position: relative;
+  background-color: white;
+}
+
+.main-menu {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
   gap: 20px;
-}
-.header__bottom__menus ul li {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
-.header__bottom__menus ul li a {
+
+.main-menu li {
+  position: relative;
+}
+
+.menu__link {
   text-decoration: none;
   color: #2d3748;
   font-weight: bold;
+  padding: 10px 15px;
+  display: block;
+}
+
+.main-menu li:hover .menu__link__main {
+  display: block;
+}
+
+.menu__link__main {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #2d3748;
+  color: white;
+  padding: 1rem;
+  z-index: 1000;
+  min-width: 200px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.submenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.submenu__item {
+  position: relative;
+}
+
+.submenu__link__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.submenu__link {
+  color: white;
+  text-decoration: none;
+}
+
+.submenu__link__main {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  background-color: #1a202c;
+  padding: 10px;
+  min-width: 150px;
+}
+
+.submenu__item:hover .submenu__link__main {
+  display: block;
+}
+
+.menu__link__main ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu__link__main ul li a {
+  display: block;
+  padding: 8px;
+  color: white;
+  text-decoration: none;
+}
+
+.menu__link__main ul li a:hover {
+  background-color: #2d3748;
+}
+
+.submenu__link__main ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.submenu__link__main ul li a {
+  display: block;
+  padding: 8px;
+  color: white;
+  text-decoration: none;
+}
+
+.submenu__link__main ul li a:hover {
+  background-color: #2d3748;
+}
+
+@media screen and (max-width: 1024px) {
+ .header__bottom__menus{
+  display: none;
+ }
 }
