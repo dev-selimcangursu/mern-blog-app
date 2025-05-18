@@ -1,0 +1,88 @@
+.mobile_sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 260px;
+  height: 100vh;
+  background-color: #1e1e2f;
+  z-index: 999;
+  padding: 1rem;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  transition: left 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.mobile_sidebar.open {
+  left: 0;
+}
+.sidebar_header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.close_btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+.sidebar_menu {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+}
+
+.sidebar_menu li {
+  margin-bottom: 1rem;
+}
+
+.sidebar_menu_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.sidebar_menu_item a {
+  color: #fff;
+  text-decoration: none;
+  flex-grow: 1;
+  transition: color 0.2s;
+}
+
+.sidebar_menu_item:hover a {
+  color: #007bff;
+}
+
+.sidebar_submenu {
+  list-style: none;
+  margin-top: 0.5rem;
+}
+
+.sidebar_submenu li {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar_submenu a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.sidebar_submenu a:hover {
+  color: #007bff;
+}
+
+@media (min-width: 768px) {
+  .mobile_sidebar {
+    display: none;
+  }
+}

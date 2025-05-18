@@ -1,22 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import NavLinks from "./NavLinks";
 import "./HeaderBottom.css";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaSearch } from "react-icons/fa";
+import Sidebar from "./Sidebar";
 
 function HeaderBottom() {
+  const [mobileSidebar, setMobileSidebar] = useState(false);
+
+  function changeMobileSidebarStatus() {
+    setMobileSidebar(!mobileSidebar);
+    document.body.style.overflow = !mobileSidebar ? "hidden" : "auto";
+  }
+
+  function closeSidebar() {
+    setMobileSidebar(false);
+    document.body.style.overflow = "auto";
+  }
+
   return (
-    <div className="header__bottom">
-      <FaSearch id="mobile_search__icon"/>
-      <div className="header__bottom__logo">
-        <img
-          src="https://www.bizevdeyokuz.com/wp-content/uploads/bey-logo-v5-retina.png"
-          alt=""
+    <>
+      <Sidebar status={mobileSidebar} closeSidebar={closeSidebar} />
+      <div className="header__bottom">
+        <FaSearch id="mobile_search__icon" />
+        <div className="header__bottom__logo">
+          <img
+            src="https://www.bizevdeyokuz.com/wp-content/uploads/bey-logo-v5-retina.png"
+            alt="logo"
+          />
+        </div>
+        <NavLinks />
+        <RxHamburgerMenu
+          onClick={changeMobileSidebarStatus}
+          id="mobile__sidebar__button"
         />
       </div>
-      <NavLinks/>
-      <RxHamburgerMenu id="mobile__sidebar__button" />
-    </div>
+    </>
   );
 }
 

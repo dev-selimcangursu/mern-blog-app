@@ -17,6 +17,7 @@
 #mobile__sidebar__button {
   display: none;
   font-size: 26px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1024px) {
