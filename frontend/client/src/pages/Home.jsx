@@ -9,15 +9,18 @@ import {
   fetchGetBlogFeatured,
   fetchGetNewestBlog,
 } from "../features/blogsSlice";
+import { fetchGetAbout } from "../features/aboutSlice";
 
 function Home() {
   const dispatch = useDispatch();
   const featuredBlog = useSelector((state) => state.blogs.featured);
   const newestBlog = useSelector((state) => state.blogs.newestBlog);
+  const about = useSelector((state) => state.about.about);
 
-  console.log(newestBlog);
+  console.log(about);
   useEffect(() => {
     dispatch(fetchGetBlogFeatured());
+    dispatch(fetchGetAbout());
     dispatch(fetchGetNewestBlog());
   }, [dispatch]);
   return (
@@ -84,29 +87,33 @@ function Home() {
             />
             <h1 className="who__are__we__area__title">Biz Kimiz</h1>
             <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis
-              beatae in at doloribus veniam totam non officiis reprehenderit
-              quas repudiandae sint dolor accusamus sapiente quia quis ratione,
-              saepe doloremque architecto qui sequi neque aut ex! Eos beatae
-              magni laudantium optio.
+              {about.about.length > 100
+                ? about.about.slice(0, 350) + "..."
+                : about.about}
             </p>
             <div className="who__are__we__social__media">
               <h3 className="who__are__we__social__media__title">
                 Bizi Takip Edin
               </h3>
               <div className="who__are__we__social__media__list">
-                <img
-                  src="https://cdn-icons-png.freepik.com/256/2111/2111463.png?uid=R190373578&ga=GA1.1.750660428.1742764870&semt=ais_hybrid"
-                  alt=""
-                />
-                <img
-                  src="https://cdn-icons-png.freepik.com/256/3291/3291695.png?uid=R190373578&ga=GA1.1.750660428.1742764870&semt=ais_hybrid"
-                  alt=""
-                />
-                <img
-                  src="https://cdn-icons-png.freepik.com/256/3536/3536505.png?uid=R190373578&ga=GA1.1.750660428.1742764870&semt=ais_hybrid"
-                  alt=""
-                />
+                <a href={about.instagram}>
+                  <img
+                    src="https://cdn-icons-png.freepik.com/256/2111/2111463.png?uid=R190373578&ga=GA1.1.750660428.1742764870&semt=ais_hybrid"
+                    alt=""
+                  />
+                </a>
+                <a href={about.github}>
+                  <img
+                    src="https://cdn-icons-png.freepik.com/256/3291/3291695.png?uid=R190373578&ga=GA1.1.750660428.1742764870&semt=ais_hybrid"
+                    alt=""
+                  />
+                </a>
+                <a href={about.linkedin}>
+                  <img
+                    src="https://cdn-icons-png.freepik.com/256/3536/3536505.png?uid=R190373578&ga=GA1.1.750660428.1742764870&semt=ais_hybrid"
+                    alt=""
+                  />
+                </a>
               </div>
             </div>
           </div>
