@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getBlogFeatured } from "../api/blogsApi";
+import { getBlogFeatured, getNewestBlog } from "../api/blogsApi";
 
 export const fetchGetBlogFeatured = createAsyncThunk(
   "/blog-featured",
@@ -9,8 +9,14 @@ export const fetchGetBlogFeatured = createAsyncThunk(
   }
 );
 
+export const fetchGetNewestBlog = createAsyncThunk("/blog-newest", async () => {
+  let newestBlog = await getNewestBlog();
+  return newestBlog.data;
+});
+
 export const initialState = {
   featured: [],
+  newestBlog: [],
 };
 export const blogsSlice = createSlice({
   name: "blogs",
@@ -19,6 +25,9 @@ export const blogsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchGetBlogFeatured.fulfilled, (state, action) => {
       state.featured = action.payload;
+    });
+    builder.addCase(fetchGetNewestBlog.fulfilled, (state, action) => {
+      state.newestBlog = action.payload;
     });
   },
 });

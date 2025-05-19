@@ -5,14 +5,20 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchGetBlogFeatured } from "../features/blogsSlice";
+import {
+  fetchGetBlogFeatured,
+  fetchGetNewestBlog,
+} from "../features/blogsSlice";
 
 function Home() {
   const dispatch = useDispatch();
   const featuredBlog = useSelector((state) => state.blogs.featured);
-  console.log(featuredBlog);
+  const newestBlog = useSelector((state) => state.blogs.newestBlog);
+
+  console.log(newestBlog);
   useEffect(() => {
     dispatch(fetchGetBlogFeatured());
+    dispatch(fetchGetNewestBlog());
   }, [dispatch]);
   return (
     <>
@@ -50,66 +56,32 @@ function Home() {
           <div className="new__blogs__area">
             <h3>En Yeniler</h3>
             <div className="new__blogs__list">
-              <div className="new__blog__item">
-                <img src="http://localhost:5000/blog-images/banner-1.jpg" alt="blog-image" />
-                <div className="new__blog__item__body">
-                  <a className="new__blog__item__title" href="">Kuzey Kıbrısta Gezilecek Yerler</a>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Libero adipisci dicta quis, explicabo iste doloribus!
-                    Expedita accusamus rerum perferendis ad!
-                  </p>
+              {newestBlog.map((blog, index) => (
+                <div key={index} className="new__blog__item">
+                  <img
+                    src={`http://localhost:5000/blog-images/${blog.image_url}`}
+                    alt={blog.slug}
+                  />
+                  <div className="new__blog__item__body">
+                    <a className="new__blog__item__title" href="">
+                      {blog.title}
+                    </a>
+                    <p>
+                      {blog.content.length > 100
+                        ? blog.content.slice(0, 200) + "..."
+                        : blog.content}
+                    </p>
+                  </div>
                 </div>
-              </div>
-                 <div className="new__blog__item">
-                <img src="http://localhost:5000/blog-images/banner-1.jpg" alt="blog-image" />
-                <div className="new__blog__item__body">
-                  <a className="new__blog__item__title" href="">Kuzey Kıbrısta Gezilecek Yerler</a>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Libero adipisci dicta quis, explicabo iste doloribus!
-                    Expedita accusamus rerum perferendis ad!
-                  </p>
-                </div>
-              </div>
-                 <div className="new__blog__item">
-                <img src="http://localhost:5000/blog-images/banner-1.jpg" alt="blog-image" />
-                <div className="new__blog__item__body">
-                  <a className="new__blog__item__title" href="">Kuzey Kıbrısta Gezilecek Yerler</a>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Libero adipisci dicta quis, explicabo iste doloribus!
-                    Expedita accusamus rerum perferendis ad!
-                  </p>
-                </div>
-              </div>
-                 <div className="new__blog__item">
-                <img src="http://localhost:5000/blog-images/banner-1.jpg" alt="blog-image" />
-                <div className="new__blog__item__body">
-                  <a className="new__blog__item__title" href="">Kuzey Kıbrısta Gezilecek Yerler</a>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Libero adipisci dicta quis, explicabo iste doloribus!
-                    Expedita accusamus rerum perferendis ad!
-                  </p>
-                </div>
-              </div>
-                 <div className="new__blog__item">
-                <img src="http://localhost:5000/blog-images/banner-1.jpg" alt="blog-image" />
-                <div className="new__blog__item__body">
-                  <a className="new__blog__item__title" href="">Kuzey Kıbrısta Gezilecek Yerler</a>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Libero adipisci dicta quis, explicabo iste doloribus!
-                    Expedita accusamus rerum perferendis ad!
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
-          
+
           <div className="who__are__we__area">
-            <img src="https://www.bizevdeyokuz.com/wp-content/uploads/bey-illust-retina.gif" alt="image" />
+            <img
+              src="https://www.bizevdeyokuz.com/wp-content/uploads/bey-illust-retina.gif"
+              alt="image"
+            />
             <h1 className="who__are__we__area__title">Biz Kimiz</h1>
             <p>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis
@@ -119,12 +91,23 @@ function Home() {
               magni laudantium optio.
             </p>
             <div className="who__are__we__social__media">
-               <h3  className="who__are__we__social__media__title">Bizi Takip Edin</h3>
-               <div className="who__are__we__social__media__list">
-                  <img src="https://cdn-icons-png.freepik.com/256/2111/2111463.png?uid=R190373578&ga=GA1.1.750660428.1742764870&semt=ais_hybrid" alt="" />
-                  <img src="https://cdn-icons-png.freepik.com/256/3291/3291695.png?uid=R190373578&ga=GA1.1.750660428.1742764870&semt=ais_hybrid" alt="" />
-                  <img src="https://cdn-icons-png.freepik.com/256/3536/3536505.png?uid=R190373578&ga=GA1.1.750660428.1742764870&semt=ais_hybrid" alt="" />
-               </div>
+              <h3 className="who__are__we__social__media__title">
+                Bizi Takip Edin
+              </h3>
+              <div className="who__are__we__social__media__list">
+                <img
+                  src="https://cdn-icons-png.freepik.com/256/2111/2111463.png?uid=R190373578&ga=GA1.1.750660428.1742764870&semt=ais_hybrid"
+                  alt=""
+                />
+                <img
+                  src="https://cdn-icons-png.freepik.com/256/3291/3291695.png?uid=R190373578&ga=GA1.1.750660428.1742764870&semt=ais_hybrid"
+                  alt=""
+                />
+                <img
+                  src="https://cdn-icons-png.freepik.com/256/3536/3536505.png?uid=R190373578&ga=GA1.1.750660428.1742764870&semt=ais_hybrid"
+                  alt=""
+                />
+              </div>
             </div>
           </div>
         </section>
