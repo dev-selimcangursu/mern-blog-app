@@ -46,6 +46,88 @@ function Home() {
             ))}
           </Splide>
         </section>
+        <section className="newest__wrapper">
+          <div className="new__blogs__area">
+            <h3>En Yeniler</h3>
+            <div className="new__blogs__list">
+              <div className="new__blog__item">
+                <img src="http://localhost:5000/blog-images/banner-1.jpg" alt="blog-image" />
+                <div className="new__blog__item__body">
+                  <a className="new__blog__item__title" href="">Kuzey Kıbrısta Gezilecek Yerler</a>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Libero adipisci dicta quis, explicabo iste doloribus!
+                    Expedita accusamus rerum perferendis ad!
+                  </p>
+                </div>
+              </div>
+                 <div className="new__blog__item">
+                <img src="http://localhost:5000/blog-images/banner-1.jpg" alt="blog-image" />
+                <div className="new__blog__item__body">
+                  <a className="new__blog__item__title" href="">Kuzey Kıbrısta Gezilecek Yerler</a>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Libero adipisci dicta quis, explicabo iste doloribus!
+                    Expedita accusamus rerum perferendis ad!
+                  </p>
+                </div>
+              </div>
+                 <div className="new__blog__item">
+                <img src="http://localhost:5000/blog-images/banner-1.jpg" alt="blog-image" />
+                <div className="new__blog__item__body">
+                  <a className="new__blog__item__title" href="">Kuzey Kıbrısta Gezilecek Yerler</a>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Libero adipisci dicta quis, explicabo iste doloribus!
+                    Expedita accusamus rerum perferendis ad!
+                  </p>
+                </div>
+              </div>
+                 <div className="new__blog__item">
+                <img src="http://localhost:5000/blog-images/banner-1.jpg" alt="blog-image" />
+                <div className="new__blog__item__body">
+                  <a className="new__blog__item__title" href="">Kuzey Kıbrısta Gezilecek Yerler</a>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Libero adipisci dicta quis, explicabo iste doloribus!
+                    Expedita accusamus rerum perferendis ad!
+                  </p>
+                </div>
+              </div>
+                 <div className="new__blog__item">
+                <img src="http://localhost:5000/blog-images/banner-1.jpg" alt="blog-image" />
+                <div className="new__blog__item__body">
+                  <a className="new__blog__item__title" href="">Kuzey Kıbrısta Gezilecek Yerler</a>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Libero adipisci dicta quis, explicabo iste doloribus!
+                    Expedita accusamus rerum perferendis ad!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="who__are__we__area">
+            <img src="https://www.bizevdeyokuz.com/wp-content/uploads/bey-illust-retina.gif" alt="image" />
+            <h1 className="who__are__we__area__title">Biz Kimiz</h1>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis
+              beatae in at doloribus veniam totam non officiis reprehenderit
+              quas repudiandae sint dolor accusamus sapiente quia quis ratione,
+              saepe doloremque architecto qui sequi neque aut ex! Eos beatae
+              magni laudantium optio.
+            </p>
+            <div className="who__are__we__social__media">
+               <h3  className="who__are__we__social__media__title">Bizi Takip Edin</h3>
+               <div className="who__are__we__social__media__list">
+                  <img src="https://cdn-icons-png.freepik.com/256/2111/2111463.png?uid=R190373578&ga=GA1.1.750660428.1742764870&semt=ais_hybrid" alt="" />
+                  <img src="https://cdn-icons-png.freepik.com/256/3291/3291695.png?uid=R190373578&ga=GA1.1.750660428.1742764870&semt=ais_hybrid" alt="" />
+                  <img src="https://cdn-icons-png.freepik.com/256/3536/3536505.png?uid=R190373578&ga=GA1.1.750660428.1742764870&semt=ais_hybrid" alt="" />
+               </div>
+            </div>
+          </div>
+        </section>
       </div>
     </>
   );
