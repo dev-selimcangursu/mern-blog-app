@@ -6,8 +6,8 @@ const getFeatured = async (req, res) => {
       featured: true,
       is_active: 1,
     })
-      .sort({ created_at: -1 }) 
-      .limit(4); 
+      .sort({ created_at: -1 })
+      .limit(4);
 
     res.send(featured);
   } catch (error) {
@@ -15,4 +15,18 @@ const getFeatured = async (req, res) => {
   }
 };
 
-module.exports = { getFeatured };
+const getNewestBlog = async (req, res) => {
+  try {
+    let newestBlog = await Blog.find({
+      is_active: 1,
+    })
+      .sort({ created_at: -1 })
+      .limit(5);
+
+    res.send(newestBlog);
+  } catch (error) {
+    res.send(error);
+  }
+};
+
+module.exports = { getFeatured, getNewestBlog };
