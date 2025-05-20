@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 const categoriesRoutes = require("./routers/CategoriesRouter");
 const blogsRoutes = require("./routers/BlogRouter");
 const aboutRoutes = require("./routers/AboutRouter")
+const loginRoutes = require("./routers/LoginRouter")
+
 const cors = require("cors");
 
 app.use(cors());
@@ -16,6 +18,7 @@ app.use("/blog-images", express.static("public/blog-images"));
 app.use("/categories", categoriesRoutes);
 app.use("/blog", blogsRoutes);
 app.use("/about",aboutRoutes);
+app.use("/auth",loginRoutes);
 
 // Mongosee Bağlantısı
 mongoose
