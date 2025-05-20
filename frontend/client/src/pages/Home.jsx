@@ -1,6 +1,7 @@
 import React from "react";
 import "./Home.css";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import { useEffect } from "react";
@@ -141,6 +142,7 @@ function Home() {
           </div>
         </section>
       </div>
+      <Footer/>
     </>
   );
 }
