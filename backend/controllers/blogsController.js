@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Blog = require("../models/Blog");
 
 const getFeatured = async (req, res) => {
@@ -34,12 +34,33 @@ const getEuropeanBlogs = async (req, res) => {
   try {
     let europeanBlogs = await Blog.find({
       is_active: 1,
-       parentcategory_id: '682b08c41f243811ff224879',
-    });
+      parentcategory_id: "682b08c41f243811ff224879",
+    })
+      .sort({ created_at: -1 })
+      .limit(6);
     res.send(europeanBlogs);
   } catch (error) {
     res.send(error);
   }
 };
 
-module.exports = { getFeatured, getNewestBlog,getEuropeanBlogs };
+const getTurkieBlogs = async (req, res) => {
+  try {
+    let turkeiBlogs = await Blog.find({
+      is_active: 1,
+      category_id: "682b06e71f243811ff22486e",
+    })
+      .sort({ created_at: -1 })
+      .limit(6);
+    res.send(turkeiBlogs);
+  } catch (error) {
+    res.send(error);
+  }
+};
+
+module.exports = {
+  getFeatured,
+  getNewestBlog,
+  getEuropeanBlogs,
+  getTurkieBlogs,
+};
