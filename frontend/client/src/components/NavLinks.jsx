@@ -52,7 +52,11 @@ function NavLinks() {
                             <ul>
                               {childSubcategories.map((child) => (
                                 <li key={child._id}>
-                                  <a href="#">{child.category_name}</a>
+                                  <a
+                                    href={`/category/${child.category_name}`}
+                                  >
+                                    {child.category_name}
+                                  </a>
                                 </li>
                               ))}
                             </ul>

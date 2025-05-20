@@ -1,6 +1,6 @@
 // src/features/categoriesSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import {getCategories,getSubCategories} from "../api/categoriesApi";
+import {getCategories,getSubCategories,getAllCategories} from "../api/categoriesApi";
 
 export const fetchGetCategories = createAsyncThunk(
   "categories/getCategories",
@@ -18,10 +18,19 @@ export const fetchGetSubCategories = createAsyncThunk(
   }
 );
 
+export const fetchGetAllCategories = createAsyncThunk(
+  "categories/all",
+  async () => {
+    const response = await getAllCategories();
+    return response.data;
+  }
+);
+
 
 const initialState = {
   value: [],
-  subcategories:[]
+  subcategories:[],
+  allCategories:[]
 };
 
 const categoriesSlice = createSlice({
@@ -36,6 +45,10 @@ const categoriesSlice = createSlice({
       builder.addCase(fetchGetSubCategories.fulfilled, (state, action) => {
       state.loading = false;
       state.subcategories = action.payload;
+    });
+    builder.addCase(fetchGetAllCategories.fulfilled, (state, action) => {
+      state.loading = false;
+      state.allCategories = action.payload;
     });
   },
 });
