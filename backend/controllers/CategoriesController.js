@@ -1,6 +1,17 @@
 const { default: mongoose } = require('mongoose');
 const Categories = require('../models/Categories')
 
+const getCategories = async(req,res)=>{
+    try {
+        const allCategories = await Categories.find({
+            is_active:1
+        })
+        res.send(allCategories)
+    } catch (error) {
+        res.send(error)
+    }
+}
+
 const getAllCategories = async (req,res)=>{
 
     try {
@@ -28,6 +39,7 @@ const getAllSubCategories = async(req,res)=>{
 }
 
 module.exports = {
+    getCategories,
     getAllCategories,
     getAllSubCategories
 }
