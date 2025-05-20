@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 import BlogDetail from "../pages/BlogDetail";
 import CategoryDetail from "../pages/CategoryDetail";
 import Contact from "../pages/Contact";
+import About from "../pages/About";
 
 function AppRoutes() {
   return (
@@ -14,6 +15,7 @@ function AppRoutes() {
       <Route path="/blog/detail/:slug" element={<BlogDetail />} />
       <Route path="/category/:name" element={<CategoryDetail />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/about" element={<About />} />
     </Routes>
   );
 }

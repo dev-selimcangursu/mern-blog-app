@@ -13,8 +13,8 @@ function HeaderTop() {
           <FaGithub />
         </div>
         <div className="header__top__right">
-          <a href="">İletişim</a>
-          <a href="">Biz Kimiz</a>
+          <a href="/contact">İletişim</a>
+          <a href="/about">Biz Kimiz</a>
           <a href="">Gizlilik</a>
           <a href="">Kullanım Şartları</a>
         </div>
