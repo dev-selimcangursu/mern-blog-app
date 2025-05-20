@@ -1,6 +1,15 @@
 const mongoose = require("mongoose");
 const Blog = require("../models/Blog");
 
+const getAllBlogs = async(req,res)=>{
+  try {
+    const allBlogs = await Blog.find();
+    res.send(allBlogs)
+  } catch (error) {
+    res.send(error)
+  }
+}
+
 const getFeatured = async (req, res) => {
   try {
     const featured = await Blog.find({
@@ -63,4 +72,5 @@ module.exports = {
   getNewestBlog,
   getEuropeanBlogs,
   getTurkieBlogs,
+  getAllBlogs
 };
