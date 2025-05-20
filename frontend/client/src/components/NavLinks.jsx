@@ -40,7 +40,7 @@ function NavLinks() {
                     return (
                       <li className="submenu__item" key={sub._id}>
                         <div className="submenu__link__wrapper">
-                          <a href="#" className="submenu__link">
+                          <a  href={`/category/${sub.category_name}`} className="submenu__link">
                             {sub.category_name}
                           </a>
                           {childSubcategories.length > 0 && <FaAngleRight />}
@@ -69,12 +69,6 @@ function NavLinks() {
             </div>
           </li>
         ))}
-
-        <li>
-          <a href="#" className="menu__link">
-            Mağaza
-          </a>
-        </li>
         <li>
           <a href="#" className="menu__link">
             <FaSearch />
