@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./NavLinks.css";
-import { FaAngleRight, FaSearch } from "react-icons/fa";
+import { FaAngleRight, FaSearch, FaRegUser } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import {
   fetchGetCategories,
@@ -40,7 +40,10 @@ function NavLinks() {
                     return (
                       <li className="submenu__item" key={sub._id}>
                         <div className="submenu__link__wrapper">
-                          <a  href={`/category/${sub.category_name}`} className="submenu__link">
+                          <a
+                            href={`/category/${sub.category_name}`}
+                            className="submenu__link"
+                          >
                             {sub.category_name}
                           </a>
                           {childSubcategories.length > 0 && <FaAngleRight />}
@@ -52,9 +55,7 @@ function NavLinks() {
                             <ul>
                               {childSubcategories.map((child) => (
                                 <li key={child._id}>
-                                  <a
-                                    href={`/category/${child.category_name}`}
-                                  >
+                                  <a href={`/category/${child.category_name}`}>
                                     {child.category_name}
                                   </a>
                                 </li>

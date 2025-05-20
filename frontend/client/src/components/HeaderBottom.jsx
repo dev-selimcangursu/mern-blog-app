@@ -24,10 +24,12 @@ function HeaderBottom() {
       <div className="header__bottom">
         <FaSearch id="mobile_search__icon" />
         <div className="header__bottom__logo">
-          <img
+          <a href="/">
+             <img
             src="https://www.bizevdeyokuz.com/wp-content/uploads/bey-logo-v5-retina.png"
             alt="logo"
           />
+          </a>
         </div>
         <NavLinks />
         <RxHamburgerMenu

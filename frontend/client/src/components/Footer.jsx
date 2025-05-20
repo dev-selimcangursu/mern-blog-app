@@ -22,16 +22,16 @@ function Footer() {
           </h5>
           <ul className="footer-links">
             <li>
-              <a href="#">Kullanım Şartları</a>
+              <a href="/terms-of-use">Kullanım Şartları</a>
             </li>
             <li>
-              <a href="#">Gizlilik</a>
+              <a href="/security">Gizlilik</a>
             </li>
             <li>
-              <a href="#">Biz Kimiz</a>
+              <a href="/about">Biz Kimiz</a>
             </li>
             <li>
-              <a href="#">İletişim</a>
+              <a href="/contact">İletişim</a>
             </li>
           </ul>
         </div>

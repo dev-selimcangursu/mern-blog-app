@@ -9,6 +9,8 @@ import Contact from "../pages/Contact";
 import About from "../pages/About";
 import Security from "../pages/Security";
 import TermsOfUse from "../pages/TermsOfUse";
+import Login from "../pages/Login"
+
 
 function AppRoutes() {
   return (
@@ -20,6 +22,7 @@ function AppRoutes() {
       <Route path="/about" element={<About />} />
       <Route path="/security" element={<Security />} />
       <Route path="/terms-of-use" element={<TermsOfUse />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
   );
 }

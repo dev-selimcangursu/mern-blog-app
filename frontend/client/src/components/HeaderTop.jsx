@@ -17,6 +17,7 @@ function HeaderTop() {
           <a href="/about">Biz Kimiz</a>
           <a href="/security">Gizlilik</a>
           <a href="/terms-of-use">Kullanım Şartları</a>
+          <a href="/login">Giriş Yap / Kayıt Ol</a>
         </div>
       </div>
     </div>
