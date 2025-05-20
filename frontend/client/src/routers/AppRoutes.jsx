@@ -7,6 +7,8 @@ import BlogDetail from "../pages/BlogDetail";
 import CategoryDetail from "../pages/CategoryDetail";
 import Contact from "../pages/Contact";
 import About from "../pages/About";
+import Security from "../pages/Security";
+import TermsOfUse from "../pages/TermsOfUse";
 
 function AppRoutes() {
   return (
@@ -16,6 +18,8 @@ function AppRoutes() {
       <Route path="/category/:name" element={<CategoryDetail />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/about" element={<About />} />
+      <Route path="/security" element={<Security />} />
+      <Route path="/terms-of-use" element={<TermsOfUse />} />
     </Routes>
   );
 }

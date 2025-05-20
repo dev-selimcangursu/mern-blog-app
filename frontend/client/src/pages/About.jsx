@@ -146,6 +146,7 @@ function About() {
           </div>
         </div>
       </main>
+      <br />
       <Footer />
     </>
   );
