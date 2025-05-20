@@ -8,20 +8,24 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   fetchGetBlogFeatured,
   fetchGetNewestBlog,
+  fetchEuropeBlog,
 } from "../features/blogsSlice";
 import { fetchGetAbout } from "../features/aboutSlice";
+import BlogCard from "../components/BlogCard";
 
 function Home() {
   const dispatch = useDispatch();
   const featuredBlog = useSelector((state) => state.blogs.featured);
   const newestBlog = useSelector((state) => state.blogs.newestBlog);
   const about = useSelector((state) => state.about.about);
+  const europeBlog = useSelector((state) => state.blogs.europeblog);
 
-  console.log(about);
+  console.log(newestBlog);
   useEffect(() => {
     dispatch(fetchGetBlogFeatured());
     dispatch(fetchGetAbout());
     dispatch(fetchGetNewestBlog());
+    dispatch(fetchEuropeBlog());
   }, [dispatch]);
   return (
     <>
@@ -79,18 +83,18 @@ function Home() {
               ))}
             </div>
           </div>
-
           <div className="who__are__we__area">
             <img
-              src="https://www.bizevdeyokuz.com/wp-content/uploads/bey-illust-retina.gif"
+              src="https://img.freepik.com/free-vector/flat-propose-day-illustration_23-2150078705.jpg?uid=R190373578&ga=GA1.1.750660428.1742764870&semt=ais_hybrid&w=740"
               alt="image"
             />
             <h1 className="who__are__we__area__title">Biz Kimiz</h1>
             <p>
-              {about.about.length > 100
+              {about?.about
                 ? about.about.slice(0, 350) + "..."
-                : about.about}
+                : "Yükleniyor..."}
             </p>
+
             <div className="who__are__we__social__media">
               <h3 className="who__are__we__social__media__title">
                 Bizi Takip Edin
@@ -118,6 +122,15 @@ function Home() {
             </div>
           </div>
         </section>
+        <section className="european__classics__wrapper">
+          <h3>Avrupa Klasikleri</h3>
+          <div className="european__classics__card__list">
+            {europeBlog.map((blog, index) => (
+              <BlogCard detail={blog} key={index} />
+            ))}
+          </div>
+        </section>
+        <section className=""></section>
       </div>
     </>
   );

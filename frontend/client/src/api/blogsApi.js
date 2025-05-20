@@ -9,3 +9,8 @@ export const getNewestBlog = async () => {
   let response = await axios.get("http://localhost:5000/blog/get-newest");
   return response;
 };
+
+export const getEuropeBlog = async()=>{
+  let response = await axios.get('http://localhost:5000/blog/get-european')
+  return response
+}
