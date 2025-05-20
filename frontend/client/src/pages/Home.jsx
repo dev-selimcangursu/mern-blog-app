@@ -38,7 +38,7 @@ function Home() {
           <Splide options={{ rewind: true, autoplay: true, interval: 4000 }}>
             {featuredBlog.map((blog, index) => (
               <SplideSlide key={index}>
-                <a className="banner__main__link" href="#">
+                <a className="banner__main__link" href={`/blog/detail/${blog.slug}`}>
                   <div className="banner__main">
                     <div className="banner__main__left">
                       <img
@@ -73,7 +73,7 @@ function Home() {
                     alt={blog.slug}
                   />
                   <div className="new__blog__item__body">
-                    <a className="new__blog__item__title" href="">
+                    <a className="new__blog__item__title" href={`/blog/detail/${blog.slug}`}>
                       {blog.title}
                     </a>
                     <p>

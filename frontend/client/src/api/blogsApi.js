@@ -1,5 +1,10 @@
 import axios from "axios";
 
+export const fetAllBlogs = async()=>{
+  const response = await axios.get('http://localhost:5000/blog/get-all')
+  return response
+}
+
 export const getBlogFeatured = async () => {
   let response = await axios.get("http://localhost:5000/blog/get-featured");
   return response;

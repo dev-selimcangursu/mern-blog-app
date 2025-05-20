@@ -1,11 +1,16 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
+  fetAllBlogs,
   getBlogFeatured,
   getNewestBlog,
   getEuropeBlog,
   getTurkieBlogs,
 } from "../api/blogsApi";
 
+export const fetchAllBlog = createAsyncThunk("get-all", async () => {
+  let allBlog = await fetAllBlogs();
+  return allBlog.data;
+});
 export const fetchGetBlogFeatured = createAsyncThunk(
   "/blog-featured",
   async () => {
@@ -29,10 +34,11 @@ export const fetchTurkeiBlogs = createAsyncThunk("/blog-turkei", async () => {
 });
 
 export const initialState = {
+  allBlogs: [],
   featured: [],
   newestBlog: [],
   europeblog: [],
-  turkeiBlog:[]
+  turkeiBlog: [],
 };
 export const blogsSlice = createSlice({
   name: "blogs",
@@ -48,8 +54,11 @@ export const blogsSlice = createSlice({
     builder.addCase(fetchEuropeBlog.fulfilled, (state, action) => {
       state.europeblog = action.payload;
     });
-     builder.addCase(fetchTurkeiBlogs.fulfilled, (state, action) => {
+    builder.addCase(fetchTurkeiBlogs.fulfilled, (state, action) => {
       state.turkeiBlog = action.payload;
+    });
+    builder.addCase(fetchAllBlog.fulfilled, (state, action) => {
+      state.allBlogs = action.payload;
     });
   },
 });
