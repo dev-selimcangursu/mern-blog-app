@@ -4,5 +4,6 @@ const router = express.Router();
 
 router.get('/get-featured',BlogsContoller.getFeatured)
 router.get('/get-newest',BlogsContoller.getNewestBlog)
+router.get('/get-european',BlogsContoller.getEuropeanBlogs)
 
 module.exports = router
