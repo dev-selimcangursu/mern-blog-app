@@ -9,6 +9,7 @@ import {
   fetchGetBlogFeatured,
   fetchGetNewestBlog,
   fetchEuropeBlog,
+  fetchTurkeiBlogs,
 } from "../features/blogsSlice";
 import { fetchGetAbout } from "../features/aboutSlice";
 import BlogCard from "../components/BlogCard";
@@ -19,13 +20,14 @@ function Home() {
   const newestBlog = useSelector((state) => state.blogs.newestBlog);
   const about = useSelector((state) => state.about.about);
   const europeBlog = useSelector((state) => state.blogs.europeblog);
+  const turkeiBlog = useSelector((state) => state.blogs.turkeiBlog);
 
-  console.log(newestBlog);
   useEffect(() => {
     dispatch(fetchGetBlogFeatured());
     dispatch(fetchGetAbout());
     dispatch(fetchGetNewestBlog());
     dispatch(fetchEuropeBlog());
+    dispatch(fetchTurkeiBlogs());
   }, [dispatch]);
   return (
     <>
@@ -130,7 +132,14 @@ function Home() {
             ))}
           </div>
         </section>
-        <section className=""></section>
+        <section className="turkei__classics__wrapper">
+          <h3>Türkiye Klasikleri</h3>
+          <div className="turkie__classics__card__list">
+            {turkeiBlog.map((blog, index) => (
+              <BlogCard detail={blog} key={index} />
+            ))}
+          </div>
+        </section>
       </div>
     </>
   );

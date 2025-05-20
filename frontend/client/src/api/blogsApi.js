@@ -14,3 +14,8 @@ export const getEuropeBlog = async()=>{
   let response = await axios.get('http://localhost:5000/blog/get-european')
   return response
 }
+
+export const getTurkieBlogs = async()=>{
+  let response = await axios.get('http://localhost:5000/blog/get-turkei')
+  return response
+}
