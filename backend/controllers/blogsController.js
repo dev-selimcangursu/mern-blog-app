@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 const Blog = require("../models/Blog");
 
-const getAllBlogs = async(req,res)=>{
+const getAllBlogs = async (req, res) => {
   try {
     const allBlogs = await Blog.find();
-    res.send(allBlogs)
+    res.send(allBlogs);
   } catch (error) {
-    res.send(error)
+    res.send(error);
   }
-}
+};
 
 const getFeatured = async (req, res) => {
   try {
@@ -43,7 +43,7 @@ const getEuropeanBlogs = async (req, res) => {
   try {
     let europeanBlogs = await Blog.find({
       is_active: 1,
-      parentcategory_id: "682b08c41f243811ff224879",
+      category_id: "682b08b21f243811ff224878",
     })
       .sort({ created_at: -1 })
       .limit(6);
@@ -72,5 +72,5 @@ module.exports = {
   getNewestBlog,
   getEuropeanBlogs,
   getTurkieBlogs,
-  getAllBlogs
+  getAllBlogs,
 };
