@@ -3,6 +3,8 @@ import "./HeaderTop.css";
 import { FaLinkedin, FaInstagram, FaYoutube, FaGithub } from "react-icons/fa";
 
 function HeaderTop() {
+  const token = localStorage.getItem("token");
+
   return (
     <div className="header__top">
       <div className="header__top__main">
@@ -17,7 +19,14 @@ function HeaderTop() {
           <a href="/about">Biz Kimiz</a>
           <a href="/security">Gizlilik</a>
           <a href="/terms-of-use">Kullanım Şartları</a>
-          <a href="/login">Giriş Yap / Kayıt Ol</a>
+          {token ? (
+            <>
+              <a href="/account">Hesabım</a>
+              <a href="/logout">Çıkış Yap</a>
+            </>
+          ) : (
+            <a href="/login">Giriş Yap / Kayıt Ol</a>
+          )}
         </div>
       </div>
     </div>

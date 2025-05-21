@@ -6,8 +6,11 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { login, register } from "../api/authApi";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+
 
 function Login() {
+  const navigation = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
 
   const loginSchema = Yup.object().shape({
@@ -56,6 +59,10 @@ function Login() {
           title: "Başarılı",
           text: data.message,
         });
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+          navigation('/account')
+        }
       } else {
         Swal.fire({
           icon: "error",

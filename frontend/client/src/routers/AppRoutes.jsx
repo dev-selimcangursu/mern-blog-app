@@ -9,8 +9,8 @@ import Contact from "../pages/Contact";
 import About from "../pages/About";
 import Security from "../pages/Security";
 import TermsOfUse from "../pages/TermsOfUse";
-import Login from "../pages/Login"
-
+import Login from "../pages/Login";
+import Account from "../pages/Account";
 
 function AppRoutes() {
   return (
@@ -23,6 +23,7 @@ function AppRoutes() {
       <Route path="/security" element={<Security />} />
       <Route path="/terms-of-use" element={<TermsOfUse />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/account" element={<Account />} />
     </Routes>
   );
 }
