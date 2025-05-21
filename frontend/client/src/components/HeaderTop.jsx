@@ -1,9 +1,17 @@
 import React from "react";
 import "./HeaderTop.css";
 import { FaLinkedin, FaInstagram, FaYoutube, FaGithub } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function HeaderTop() {
   const token = localStorage.getItem("token");
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
 
   return (
     <div className="header__top">
@@ -22,7 +30,15 @@ function HeaderTop() {
           {token ? (
             <>
               <a href="/account">Hesabım</a>
-              <a href="/logout">Çıkış Yap</a>
+              <a
+                href="#!"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLogout();
+                }}
+              >
+                Çıkış Yap
+              </a>
             </>
           ) : (
             <a href="/login">Giriş Yap / Kayıt Ol</a>
