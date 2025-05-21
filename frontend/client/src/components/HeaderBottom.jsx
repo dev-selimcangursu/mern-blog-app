@@ -26,7 +26,8 @@ function HeaderBottom() {
         <div className="header__bottom__logo">
           <a href="/">
              <img
-            src="https://www.bizevdeyokuz.com/wp-content/uploads/bey-logo-v5-retina.png"
+             style={{height:'auto',width:'100%'}}
+            src="../../public/logo.png"
             alt="logo"
           />
           </a>

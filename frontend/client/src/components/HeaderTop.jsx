@@ -2,6 +2,7 @@ import React from "react";
 import "./HeaderTop.css";
 import { FaLinkedin, FaInstagram, FaYoutube, FaGithub } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function HeaderTop() {
   const token = localStorage.getItem("token");
@@ -9,8 +10,19 @@ function HeaderTop() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/login");
+    Swal.fire({
+      title: "Emin misiniz?",
+      text: "Çıkış yapmak istediğinize emin misiniz?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Evet, çıkış yap",
+      cancelButtonText: "İptal",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("token");
+        navigate("/login");
+      }
+    });
   };
 
   return (
