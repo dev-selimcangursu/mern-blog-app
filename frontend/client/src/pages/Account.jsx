@@ -3,10 +3,45 @@ import "./Account.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
+import { updateUserInfo } from "../api/authApi";
 
 function Account() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+
+  const [newName, setNewName] = useState("");
+  const [newEmail, setNewEmail] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+
+  function updateNameInput(e) {
+    setNewName(e.target.value);
+  }
+  function updateEmailInput(e) {
+    setNewEmail(e.target.value);
+  }
+  function updatePasswordInput(e) {
+    setNewPassword(e.target.value);
+  }
+
+  async function updateUserInfoFunc(e) {
+    e.preventDefault();
+    let response = await updateUserInfo({
+      id: user.id,
+      name: newName,
+      email: newEmail,
+      password: newPassword,
+    });
+    if (response.success) {
+      console.log(response.message);
+
+      if (response.user) {
+        setUser(response.user);
+        setNewName(response.user.name);
+        setNewEmail(response.user.email);
+        setNewPassword(""); // Şifre inputunu temizlemek için
+      }
+    }
+  }
 
   const parseJwt = (token) => {
     try {
@@ -37,6 +72,8 @@ function Account() {
       navigate("/login");
     } else {
       setUser(decoded);
+      setNewName(decoded.name);
+      setNewEmail(decoded.email);
     }
   }, [navigate]);
 
@@ -51,7 +88,7 @@ function Account() {
 
           <div className="account-profile">
             <img
-              src="https://via.placeholder.com/100"
+              src="https://img.freepik.com/free-vector/user-circles-set_78370-4704.jpg?uid=R190373578&ga=GA1.1.750660428.1742764870&semt=ais_hybrid&w=740"
               alt="Profil Fotoğrafı"
               className="profile-image"
             />
@@ -63,21 +100,36 @@ function Account() {
 
           <div className="account-form">
             <div className="form-group">
+              <label>Kayıt Numarası</label>
+              <input disabled type="text" value={user.id} />
+            </div>
+            <div className="form-group">
               <label>Ad Soyad</label>
-              <input type="text" value={user.name} readOnly />
+              <input onChange={updateNameInput} type="text" value={newName} />
             </div>
 
             <div className="form-group">
               <label>E-Posta</label>
-              <input type="email" value={user.email} readOnly />
+              <input
+                onChange={updateEmailInput}
+                type="email"
+                value={newEmail}
+              />
             </div>
 
             <div className="form-group">
               <label>Şifreyi Değiştir</label>
-              <input type="password" placeholder="Yeni şifre girin" />
+              <input
+                onChange={updatePasswordInput}
+                type="password"
+                placeholder="Yeni şifre girin"
+                value={newPassword}
+              />
             </div>
 
-            <button className="update-button">Bilgileri Güncelle</button>
+            <button onClick={updateUserInfoFunc} className="update-button">
+              Bilgileri Güncelle
+            </button>
           </div>
         </div>
       </div>

@@ -20,3 +20,12 @@ export const register = async (userData) => {
     console.log(error);
   }
 };
+
+export const updateUserInfo = async (newUserData) => {
+  try {
+    let data = await axios.post("http://localhost:5000/auth/update", newUserData);
+    return data.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
